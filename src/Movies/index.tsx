@@ -1,21 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 
+import { API } from "../types";
 import Movie from "./Movie";
 
 function Movies() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<API.Movie[]>([]);
   const [searchText, setSearchText] = useState("");
-  const timeoutRef = useRef();
+  const timeoutRef = useRef(0);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const response = await fetch(
-          `http://www.omdbapi.com/?s=${searchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
+          `https://www.omdbapi.com/?s=${searchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
         );
 
         const data = await response.json();
-
         setMovies(data.Search);
       } catch (e) {
         console.log(e);
@@ -23,7 +23,7 @@ function Movies() {
       clearTimeout(timeoutRef.current);
     };
 
-    timeoutRef.current = setTimeout(fetchMovies, 5000);
+    timeoutRef.current = window.setTimeout(fetchMovies, 5000);
 
     return () => {
       clearTimeout(timeoutRef.current);
