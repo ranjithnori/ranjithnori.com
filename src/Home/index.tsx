@@ -1,13 +1,8 @@
-import { Link } from "react-router-dom";
-
 function Home() {
   return (
-    <>
-      <h1>Hi, this is Ranjith</h1>
-
-      <h2>Projects:</h2>
-      <Link to="/movies">Movies</Link>
-    </>
+    <div>
+      <h1>Hi, my name is Ranjith Nori.</h1>
+    </div>
   );
 }
 
