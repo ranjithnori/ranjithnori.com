@@ -60,7 +60,7 @@ export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
+        Ranjith's Corner On The Internet
       </h1>
       {sections.map(s => (
         <div key={s.title} className='mb-[12px]'>
